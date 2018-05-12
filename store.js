@@ -38,7 +38,8 @@ function main(arg){
                     newData[arg[1]] = arg[2];
                     fs.writeFile('data.json', JSON.stringify(newData), function (err) {
                         if (err) throw err;
-                        console.log('Replaced!');
+                        console.log('Added!');
+                        console.log(newData)
                     }); 
                 } else {
                     console.log("Please enter key and value!")
