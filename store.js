@@ -6,6 +6,7 @@ const myObj = {
 
 function main(arg){
     switch(arg[0]) {
+        //listing
         case "list":  {
             fs.readFile('data.json', function(err, data) {
                 console.log(JSON.parse(data))
@@ -13,9 +14,11 @@ function main(arg){
         }
         break;
         case "get":  {
+            //get value by key name
             fs.readFile('data.json', function(err, data) {
-                const jsonData = JSON.parse(data);
+                const jsonData = JSON.parse(data); 
                 const myKey = arg[1];
+                //check if the key doesn't exist
                 if(jsonData[myKey] == undefined){
                     console.log("key does not exist in the list")
                 } else {
@@ -26,9 +29,10 @@ function main(arg){
         break;
         case "add": {
             let newData;
-
             fs.readFile('data.json', function(err, data) {
                 newData = JSON.parse(data);
+                //check that the two arguments (key & value) are passed, 
+                //or else key will be deleted if arg[2] was undefined
                 if (arg[1] && arg[2]) {
                     newData[arg[1]] = arg[2];
                     fs.writeFile('data.json', JSON.stringify(newData), function (err) {
@@ -36,7 +40,7 @@ function main(arg){
                         console.log('Replaced!');
                     }); 
                 } else {
-                    console.log("Please enter two args")
+                    console.log("Please enter key and value!")
                 }
             });                   
         }
@@ -46,6 +50,7 @@ function main(arg){
             let myKey = arg[1];
             fs.readFile('data.json', function(err, data) {
                 jsonData = JSON.parse(data);
+                //check if key does not exist
                 if(jsonData[myKey] == undefined){
                     console.log ("key does not exist in the list")
                 }
@@ -81,4 +86,4 @@ function main(arg){
 };
 
 main(process.argv.slice(2))
-// console.log("funck you , node!")
+
