@@ -5,6 +5,7 @@ const myObj = {
 };
 
 function main(arg){
+    //feel free to list, get by key name, delete and clear :D
     switch(arg[0]) {
         //listing
         case "list":  {
